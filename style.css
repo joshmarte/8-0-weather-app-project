@@ -2,10 +2,35 @@
   display: grid;
   grid-template-areas:
     "header header header header"
-    "main main main sidebar";
-  grid-gap: 10px;
+    "main main main sidebar"
+    "days days days sidebar";
+  grid-gap: 20px;
   margin: 0 auto;
   width: 75%;
+}
+
+div.days {
+  grid-area: days;
+  display: grid;
+  grid-template-areas: "today tomorrow after";
+}
+
+div.days #today {
+  grid-area: today;
+  margin: 5px;
+}
+div.days #tomorrow {
+  grid-area: tomorrow;
+  margin: 5px;
+}
+div.days #day-after {
+  grid-area: after;
+  margin: 5px;
+}
+
+div.days {
+  text-align: center;
+  font-size: smaller;
 }
 
 #head {

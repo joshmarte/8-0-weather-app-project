@@ -7,8 +7,9 @@ document.querySelector("form").addEventListener("submit", (event) => {
       console.log(res);
       return res.json().then((data) => {
         console.log(data);
-        let display = document.querySelector("div.display");
-        display.innerHTML = `<div><strong>${city}</strong></div>
+
+        let divDisplay = document.querySelector("div.display");
+        divDisplay.innerHTML = `<div><strong>${city}</strong></div>
         <div><strong>Area: </strong>${data.nearest_area[0].areaName[0].value}</div>
         <div><strong>Region: </strong>${data.nearest_area[0].region[0].value}</div>
         <div><strong>Country: </strong>${data.nearest_area[0].country[0].value}</div>
@@ -17,12 +18,41 @@ document.querySelector("form").addEventListener("submit", (event) => {
         let ul = document.querySelector("div.history ul");
         let li = document.createElement("li");
         ul.append(li);
-        ul.style.liststyletype = "circle";
+        ul.style = "list-style-type: circle";
         li.textContent = `${city} - ${data.current_condition[0].FeelsLikeF}°F`;
 
         if (document.querySelector("ul li").textContent.includes("previous")) {
           document.querySelector("li#default").remove();
         }
+
+        let daysGrid = document.querySelector("div.days");
+        daysGrid.innerHTML = `<div id="today">
+        <div><strong>Today</strong></div>
+        <br>
+        <div><strong>Average Temperature: </strong>${data.weather[0].avgtempF}°F</div>
+        <br>
+        <div><strong>Max Temperature: </strong>${data.weather[0].maxtempF}°F</div>
+        <br>
+        <div><strong>Min Temperature: </strong>${data.weather[0].mintempF}°F</div>
+        </div>
+        <div id="tomorrow">
+        <div><strong>Tomorrow</strong></div>
+        <br>
+        <div><strong>Average Temperature: </strong>${data.weather[1].avgtempF}°F</div>
+        <br>
+        <div><strong>Max Temperature: </strong>${data.weather[1].maxtempF}°F</div>
+        <br>
+        <div><strong>Min Temperature: </strong>${data.weather[1].mintempF}°F</div>
+        </div>
+        <div id="day-after">
+        <div><strong>Day After Tomorrow</strong></div>
+        <br>
+        <div><strong>Average Temperature: </strong>${data.weather[2].avgtempF}°F</div>
+        <br>
+        <div><strong>Max Temperature: </strong>${data.weather[2].maxtempF}°F</div>
+        <br>
+        <div><strong>Min Temperature: </strong>${data.weather[2].mintempF}°F</div>
+        </div>`;
       });
     })
     .catch((error) => {
