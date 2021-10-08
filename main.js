@@ -1,12 +1,9 @@
-document.querySelector("form").addEventListener("submit", (event) => {
-  event.preventDefault();
-  let city = document.querySelector("#input-text").value;
-  console.log(city);
+function getData(city) {
   fetch(`https://wttr.in/${city}?format=j1`)
     .then((res) => {
-      console.log(res);
+      //   console.log(res);
       return res.json().then((data) => {
-        console.log(data);
+        // console.log(data);
 
         let divDisplay = document.querySelector("div.display");
         divDisplay.innerHTML = `<div><strong>${city}</strong></div>
@@ -15,11 +12,19 @@ document.querySelector("form").addEventListener("submit", (event) => {
         <div><strong>Country: </strong>${data.nearest_area[0].country[0].value}</div>
         <div><strong>Currently: Feels like </strong>${data.current_condition[0].FeelsLikeF}°F</div>`;
 
-        let ul = document.querySelector("div.history ul");
-        let li = document.createElement("li");
-        ul.append(li);
-        ul.style = "list-style-type: circle";
-        li.textContent = `${city} - ${data.current_condition[0].FeelsLikeF}°F`;
+        let links = document.querySelectorAll("a.links");
+        let cities = [];
+        for (let link of links) {
+          cities.push(link.textContent);
+        }
+        console.log(cities);
+        if (!cities.includes(city)) {
+          let ul = document.querySelector("div.history ul");
+          let li = document.createElement("li");
+          ul.append(li);
+          ul.style = "list-style-type: inherit";
+          li.innerHTML = `<a class="links" href="#" onClick="getData('${city}')">${city}<a/><span> - ${data.current_condition[0].FeelsLikeF}°F<span/>`;
+        }
 
         if (document.querySelector("ul li").textContent.includes("previous")) {
           document.querySelector("li#default").remove();
@@ -58,4 +63,12 @@ document.querySelector("form").addEventListener("submit", (event) => {
     .catch((error) => {
       console.log(error);
     });
+}
+
+document.querySelector("form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  let city = document.querySelector("#input-text").value;
+  document.querySelector("#input-text").value = "";
+
+  getData(city);
 });
