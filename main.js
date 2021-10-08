@@ -1,11 +1,11 @@
 function getData(city) {
   fetch(`https://wttr.in/${city}?format=j1`)
     .then((res) => {
-      //   console.log(res);
+      console.log(res);
       return res.json().then((data) => {
-        // console.log(data);
+        //console.log(data);
 
-        let divDisplay = document.querySelector("div.display");
+        let divDisplay = document.querySelector("div#conMain");
         divDisplay.innerHTML = `<div><strong>${city}</strong></div>
         <div><strong>Area: </strong>${data.nearest_area[0].areaName[0].value}</div>
         <div><strong>Region: </strong>${data.nearest_area[0].region[0].value}</div>
@@ -17,7 +17,7 @@ function getData(city) {
         for (let link of links) {
           cities.push(link.textContent);
         }
-        console.log(cities);
+        //console.log(cities);
         if (!cities.includes(city)) {
           let ul = document.querySelector("div.history ul");
           let li = document.createElement("li");
