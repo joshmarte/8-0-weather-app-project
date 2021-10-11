@@ -7,16 +7,25 @@
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="page">
         <div id="head">
-            <h1>Weather App</h1>
+            <div id="nav-container">
+                <img src="assets/navbarLogo.png" alt="Pursuit Logo" width="120" height="auto">
+                <div id="maps"><a href="#"><strong>MAPS</strong></a></div>
+                <div id="news"><a href="#"><strong>NEWS</strong></a></div>
+                <div id="severe"><a href="#"><strong>SEVERE WEATHER</strong></a></div>
+                <div id="more"><a href="#"><strong>MORE</strong></a></div>
+            </div>
             <form id="weather-form">
-                <label for="weather-form">
-                    <strong>Pick a Location</strong> 
-                    <input type="text" placeholder="Enter a City" id="input-text"/>
-                    <input type="submit" value="Get Weather"/>
+                <h1>Weather App</h1>
+                <label for="weather-form" id="labelForm">
+                    <input type="text" placeholder="Enter a Location" id="input-text"/>
+                    <input id="subBut" type="submit" value="Get Weather --->"/>
                 </label>
             </form>
         </div>
@@ -33,6 +42,10 @@
                 <li id="default">No previous searches.</li>
             </ul>
         </div>
+        <footer id="footer">
+            <img src="assets/footerLogo.png" alt="pursuit weather">
+            <div>Terms of Use | Privacy Policy | Cookie Policy | TAG Disclosure | Do Not Sell My Data</div>
+        </footer>
     </div>
 </body>
 </html>

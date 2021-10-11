@@ -33,29 +33,20 @@ function getData(city) {
         let daysGrid = document.querySelector("div.days");
         daysGrid.innerHTML = `<div id="today">
         <div><strong>Today</strong></div>
-        <br>
         <div><strong>Average Temperature: </strong>${data.weather[0].avgtempF}°F</div>
-        <br>
         <div><strong>Max Temperature: </strong>${data.weather[0].maxtempF}°F</div>
-        <br>
         <div><strong>Min Temperature: </strong>${data.weather[0].mintempF}°F</div>
         </div>
         <div id="tomorrow">
         <div><strong>Tomorrow</strong></div>
-        <br>
         <div><strong>Average Temperature: </strong>${data.weather[1].avgtempF}°F</div>
-        <br>
         <div><strong>Max Temperature: </strong>${data.weather[1].maxtempF}°F</div>
-        <br>
         <div><strong>Min Temperature: </strong>${data.weather[1].mintempF}°F</div>
         </div>
         <div id="day-after">
         <div><strong>Day After Tomorrow</strong></div>
-        <br>
         <div><strong>Average Temperature: </strong>${data.weather[2].avgtempF}°F</div>
-        <br>
         <div><strong>Max Temperature: </strong>${data.weather[2].maxtempF}°F</div>
-        <br>
         <div><strong>Min Temperature: </strong>${data.weather[2].mintempF}°F</div>
         </div>`;
       });
