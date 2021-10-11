@@ -1,3 +1,7 @@
+function cap(name) {
+  return name[0].toUpperCase() + name.slice(1);
+}
+
 function getData(city) {
   fetch(`https://wttr.in/${city}?format=j1`)
     .then((res) => {
@@ -6,11 +10,19 @@ function getData(city) {
         //console.log(data);
 
         let divDisplay = document.querySelector("div#conMain");
-        divDisplay.innerHTML = `<div><strong>${city}</strong></div>
-        <div><strong>Area: </strong>${data.nearest_area[0].areaName[0].value}</div>
-        <div><strong>Region: </strong>${data.nearest_area[0].region[0].value}</div>
-        <div><strong>Country: </strong>${data.nearest_area[0].country[0].value}</div>
-        <div><strong>Currently: Feels like </strong>${data.current_condition[0].FeelsLikeF}°F</div>`;
+        divDisplay.innerHTML = `<div><strong>${cap(city)}</strong></div>
+        <div><strong>Area: </strong>${
+          data.nearest_area[0].areaName[0].value
+        }</div>
+        <div><strong>Region: </strong>${
+          data.nearest_area[0].region[0].value
+        }</div>
+        <div><strong>Country: </strong>${
+          data.nearest_area[0].country[0].value
+        }</div>
+        <div><strong>Currently: Feels like </strong>${
+          data.current_condition[0].FeelsLikeF
+        }°F</div>`;
 
         let links = document.querySelectorAll("a.links");
         let cities = [];
@@ -23,7 +35,11 @@ function getData(city) {
           let li = document.createElement("li");
           ul.append(li);
           ul.style = "list-style-type: inherit";
-          li.innerHTML = `<a class="links" href="#" onClick="getData('${city}')">${city}<a/><span> - ${data.current_condition[0].FeelsLikeF}°F<span/>`;
+          li.innerHTML = `<a class="links" href="#" onClick="getData('${cap(
+            city
+          )}')">${cap(city)}<a/><span> - ${
+            data.current_condition[0].FeelsLikeF
+          }°F<span/>`;
         }
 
         if (document.querySelector("ul li").textContent.includes("previous")) {

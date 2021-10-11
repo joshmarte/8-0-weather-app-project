@@ -7,8 +7,8 @@ body {
   display: grid;
   grid-template-areas:
     "header header header header"
-    "main main sidebar sidebar"
-    "days days sidebar sidebar";
+    ". main main sidebar"
+    ". days days sidebar";
   grid-gap: 15px;
   margin: 0 auto;
 }
@@ -88,7 +88,7 @@ div.days #day-after {
   width: 40%;
   border-radius: 5px;
   margin: 20px auto;
-  padding: 25px 5px;
+  padding: 15px 5px;
 }
 #subBut {
   color: white;
@@ -113,8 +113,7 @@ div#conMain {
   margin: auto;
   border: 1px solid rgb(212, 212, 212);
   background-color: lavender;
-  padding-top: 20px;
-  width: 95%;
+  padding-top: 10px;
 }
 div.display div {
   padding: 5px;
@@ -154,5 +153,5 @@ footer div {
 }
 
 h1 {
-  color: seagreen;
+  color: cadetblue;
 }
